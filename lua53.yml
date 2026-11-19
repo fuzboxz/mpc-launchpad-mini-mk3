@@ -1,0 +1,67 @@
+---
+base: lua52
+lua_versions:
+  - lua53
+globals:
+  math.tointeger:
+    args:
+      - type: number
+    must_use: true
+  string.pack:
+    args:
+      - type: string
+      - type: ...
+    must_use: true
+  string.packsize:
+    args:
+      - type: string
+    must_use: true
+  string.unpack:
+    args:
+      - type: string
+      - type: ...
+    must_use: true
+  table.move:
+    args:
+      - type: table
+      - type: number
+      - type: number
+      - type: number
+      - required: false
+        type: table
+  utf8.char:
+    args:
+      - required: utf8.char should be used with an argument despite it not throwing
+        type: number
+      - required: false
+        type: "..."
+    must_use: true
+  utf8.charpattern:
+    property: read-only
+  utf8.codepoint:
+    args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    must_use: true
+  utf8.codes:
+    args:
+      - type: string
+    must_use: true
+  utf8.len:
+    args:
+      - type: string
+      - required: false
+        type: number
+      - required: false
+        type: number
+    must_use: true
+  utf8.offest:
+    args:
+      - type: string
+      - type: number
+      - required: false
+        type: number
+    must_use: true

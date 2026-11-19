@@ -1,0 +1,4 @@
+std = "lua53+mpc"
+
+[lints]
+multiple_statements = "allow"

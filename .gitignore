@@ -1,0 +1,15 @@
+# Non-committed references (example repos, vendor docs, extracted binaries)
+references/
+work/
+*.img
+*.bin
+*.pdf
+*.txt
+!docs/*.txt
+# Build outputs
+build/
+*.ini
+!script/*.ini.in
+
+# Development artifacts (local paths)
+dev/

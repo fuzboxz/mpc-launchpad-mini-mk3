@@ -1,0 +1,18 @@
+#!/bin/sh
+# Pre-commit gate: block .ini regressions that the MPC loader refuses SILENTLY
+# (no log, no load). See tools/check-ini.sh for the full rationale.
+# Enable once per clone:  git config core.hooksPath .githooks
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+
+status=0
+
+# 1. Hard ini gate — the shipped-incident checks.
+tools/check-ini.sh script/LaunchpadMiniMK3.ini.in template || status=1
+
+# 2. Lua must still parse.
+if command -v luac5.4 >/dev/null 2>&1; then
+    luac5.4 -p script/LaunchpadMiniMK3.lua || status=1
+fi
+
+exit "$status"
